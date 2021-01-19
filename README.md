@@ -16,7 +16,7 @@ Each app ships with a Makefile. For development you may also wish to `go get git
 
 - [ ] Basic frontend app
 - [ ] Integrate the above with basic backend app
-- [ ] CI pipeline to deploy both to separate namespaces
+- [ ] _is it worth it?_ CI pipeline to deploy both to separate namespaces
 - [ ] Validate Envoy injection
 - [ ] Istio features to explore:
   - [ ] Observability

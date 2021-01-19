@@ -18,10 +18,8 @@ run: fmt vet
 build: fmt vet test
 	go build -o bin/frontend .
 
-docker-build: #test
+build-and-push: fmt vet test
 	docker build . -t ${IMAGE_NAME}
-
-docker-push:
 	docker push ${IMAGE_NAME}
 
 deploy:

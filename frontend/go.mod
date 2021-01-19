@@ -1,4 +1,4 @@
-module github.com/alexdmoss/istio-sandbox/frontend
+module github.com/alexdmoss/istio-sandbox/ossum-ui
 
 go 1.14
 

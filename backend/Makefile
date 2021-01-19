@@ -1,4 +1,4 @@
-IMAGE_NAME ?= frontend:latest
+IMAGE_NAME ?= animals-api:latest
 
 all: test docker-build
 
@@ -16,14 +16,13 @@ run: fmt vet
 	go run main.go "${@:-}"
 
 build: fmt vet test
-	go build -o bin/frontend .
+	go build -o bin/animals-api .
 
-docker-build: #test
+build-and-push: fmt vet test
 	docker build . -t ${IMAGE_NAME}
-
-docker-push:
 	docker push ${IMAGE_NAME}
 
 deploy:
-	cd k8s/
-	kustomize build . | kubectl apply -f -
+	kubectl apply -f k8s/namespace.yaml
+	(cd k8s/; kustomize edit set image animals-api=${IMAGE_NAME})
+	(cd k8s/; kustomize build . | kubectl apply -f -)

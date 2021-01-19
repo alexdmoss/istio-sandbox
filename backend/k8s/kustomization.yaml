@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: animals
+
+commonLabels:
+  app: animals-api
+
+resources:
+- deployment.yaml
+- pdb.yaml
+- service.yaml
+- servicemonitor.yaml
+images:
+- name: animals-api
+  newName: eu.gcr.io/grand-signifier-297613/animals-api
+  newTag: "0.1"
+- name: eu.gcr.io//animals-api
+  newTag: "0.1"
+- name: eu.gcr.io/grand-signifier-297613/animals-api
+  newTag: "0.1"
